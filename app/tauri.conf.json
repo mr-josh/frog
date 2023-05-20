@@ -37,8 +37,8 @@
     },
     "bundle": {
       "active": true,
-      "category": "DeveloperTool",
-      "copyright": "",
+      "category": "Entertainment",
+      "copyright": "mr-josh",
       "deb": {
         "depends": []
       },
@@ -50,7 +50,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.mr-josh.frog",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
