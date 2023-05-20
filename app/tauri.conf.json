@@ -10,7 +10,7 @@
       "cwd": "../www"
     },
     "devPath": "http://localhost:5173",
-    "distDir": "../www"
+    "distDir": "../www/dist"
   },
   "package": {
     "productName": "frog",
