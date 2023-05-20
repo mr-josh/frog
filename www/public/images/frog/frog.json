@@ -1,0 +1,20 @@
+{
+    "frames": {
+        "idle": {
+            "frame": {"x": 0, "y": 0, "w": 16, "h": 12},
+            "sourceSize": {"w": 16, "h": 16}
+        },
+        "preJump": {
+            "frame": {"x": 16, "y": 0, "w": 16, "h": 12},
+            "sourceSize": {"w": 16, "h": 16}
+        },
+        "jump": {
+            "frame": {"x": 32, "y": 0, "w": 16, "h": 13},
+            "sourceSize": {"w": 16, "h": 16}
+        }
+    },
+    "meta": {
+        "image": "frog.png",
+        "size": {"w": 48, "h": 16}
+    }
+}
