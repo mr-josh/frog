@@ -48,7 +48,7 @@ export function MainPage() {
         FRAME_SIZE,
         Math.floor(x.current + (Math.random() - 0.5) * MAX_MOVE_AMOUNT)
       ),
-      monitor.size.width - FRAME_SIZE
+      (monitor.size.width - FRAME_SIZE) / await appWindow.scaleFactor()
     );
 
     if (Math.abs(newXGoal - x.current) < 50) {
