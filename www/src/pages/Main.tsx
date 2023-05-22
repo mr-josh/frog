@@ -48,7 +48,7 @@ export function MainPage() {
         FRAME_SIZE,
         Math.floor(x.current + (Math.random() - 0.5) * MAX_MOVE_AMOUNT)
       ),
-      (monitor.size.width - FRAME_SIZE) / await appWindow.scaleFactor()
+      (monitor.size.width - FRAME_SIZE) * (await appWindow.scaleFactor())
     );
 
     if (Math.abs(newXGoal - x.current) < 50) {
@@ -109,14 +109,21 @@ export function MainPage() {
         return;
       }
 
-      let startPos = Math.min(
-        Math.max(FRAME_SIZE, Math.floor(Math.random() * monitor.size.width)),
-        monitor.size.width - FRAME_SIZE
-      ) / await appWindow.scaleFactor();
+      let startPos =
+        Math.min(
+          Math.max(FRAME_SIZE, Math.floor(Math.random() * monitor.size.width)),
+          monitor.size.width - FRAME_SIZE
+        ) * (await appWindow.scaleFactor());
+
       x.current = startPos;
       await appWindow.setPosition(
-        new LogicalPosition(startPos, (monitor.size.height - FRAME_SIZE) / await appWindow.scaleFactor())
+        new LogicalPosition(
+          startPos,
+          monitor.size.toLogical(await appWindow.scaleFactor()).height -
+            FRAME_SIZE
+        )
       );
+
       await newGoal();
     });
   }, []);
@@ -140,11 +147,14 @@ export function MainPage() {
         setCurrentFrame("preJump");
       } else {
         setCurrentFrame("jump");
-      }
-
-      // Move the window to the new position
+      } // Move the window to the new position
       await appWindow.setPosition(
-        new LogicalPosition(x.current, (await appWindow.innerPosition()).y)
+        new LogicalPosition(
+          x.current,
+          (
+            await appWindow.innerPosition()
+          ).toLogical(await appWindow.scaleFactor()).y
+        )
       );
 
       // If we reached the goal, reset, show a message, then start again after a timeout
