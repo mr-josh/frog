@@ -112,10 +112,10 @@ export function MainPage() {
       let startPos = Math.min(
         Math.max(FRAME_SIZE, Math.floor(Math.random() * monitor.size.width)),
         monitor.size.width - FRAME_SIZE
-      );
+      ) / await appWindow.scaleFactor();
       x.current = startPos;
       await appWindow.setPosition(
-        new LogicalPosition(startPos, monitor.size.height - FRAME_SIZE)
+        new LogicalPosition(startPos, (monitor.size.height - FRAME_SIZE) / await appWindow.scaleFactor())
       );
       await newGoal();
     });
